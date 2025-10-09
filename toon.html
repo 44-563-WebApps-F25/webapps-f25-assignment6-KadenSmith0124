@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html>
- 
+<head>
+  <title>Cartoon</title>
+</head>
 <body>
 
-    <title>Cartoon</title>
 <h2>Cartoon Game by Kaden</h2>
 
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+  <label for="form1_age">What is your age </label>
+  <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+  <label for="form1_nick">What is your nickname </label>
+  <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+  <input type="button" onclick="resolveForm()" value="Get values from form"><br><br>
 
-<label for="toon_secret">That's all folks</label>
-<input type="password" id="toon_secret" value="Porky Pig"> <br>
+  <label for="toon_secret">That's all folks</label>
+  <input type="password" id="toon_secret" value="Porky Pig"> <br>
 
-<label for="toon_guess">Guess the toon</label>
-<input type="text" id="toon_guess"> <br>
+  <label for="toon_guess">Guess the toon</label>
+  <input type="text" id="toon_guess"> <br>
 
-<input type="button" onclick="checkToon()" value="Check the guess">
-
+  <input type="button" onclick="checkToon()" value="Check the guess">
 </form>
 
-
 <p id="results">Darn: 0 | Yahoo: 0</p>
+
+<div id="plantContainer">
+  <img id="plantImage" src="iris.jpg" width="150" height="150" onclick="updatePic()" alt="Plant image">
+</div>
 
 <script>
 let darn = 0;
 let yahoo = 0;
+let usePic = 1;
 
 function checkToon() {
   const secret = document.getElementById("toon_secret").value;
@@ -46,8 +50,25 @@ function checkToon() {
 
   document.getElementById("results").innerHTML = "Darn: " + darn + " | Yahoo: " + yahoo;
 }
+
+function updatePic() {
+  const plantImage = document.getElementById("plantImage");
+  switch (usePic) {
+    case 1:
+      plantImage.src = "magnolia.webp";
+      usePic = 2;
+      break;
+    case 2:
+      plantImage.src = "sunflower.jpg";
+      usePic = 3;
+      break;
+    case 3:
+      plantImage.src = "iris.jpg";
+      usePic = 1;
+      break;
+  }
+}
 </script>
 
-
 </body>
-</html> 
+</html>
