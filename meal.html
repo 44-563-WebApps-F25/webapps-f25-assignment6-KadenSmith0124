@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kaden Smith plans a meal</title>
+</head>
+<body>
+
+  <h2>Kaden Smith plans a meal</h2>
+
+  <!-- Meal checkboxes -->
+  <form>
+    <label><input type="checkbox" id="serveSalad" value="True"> Serve salad</label><br>
+    <label><input type="checkbox" id="makeStew" value="True"> Make stew</label><br>
+    <label><input type="checkbox" id="haveChocolate" value="False"> Chocolate for desert</label><br><br>
+    <button type="button" onclick="choices()">Meal Choices</button>
+  </form>
+
+  <p id="mealResult"></p>
+
+  <!-- Original basic form (kept as requested) -->
+  <form>
+    <label for="form1_age">What is your age </label>
+    <input type="number" id="form1_age" name="form1_age" min="10" max="50" step="2" value="30"> <br>
+
+    <label for="form1_nick">What is your nickname </label>
+    <input type="text" id="form1_nick" name="form1_nick" autofocus> <br>
+
+    <input type="button" onclick="resolveForm()" value="Get values from form">
+  </form>
+
+  <p id="result">This text will be replaced</p>
+
+  <script>
+    var my_meal = {};
+
+    function choices() {
+      my_meal = {};
+      my_meal.salad = document.getElementById("serveSalad").checked;
+      my_meal.stew = document.getElementById("makeStew").checked;
+      my_meal.chocolate = document.getElementById("haveChocolate").checked;
+      document.getElementById("mealResult").textContent = JSON.stringify(my_meal);
+    }
+
+    function resolveForm() {
+      var age = document.getElementById("form1_age").value;
+      var nick = document.getElementById("form1_nick").value;
+      var confirmed = confirm("Are these the values? " + age + " and " + nick);
+      var out = document.getElementById("result");
+      if (confirmed) {
+        out.textContent = "Values were confirmed";
+      } else {
+        out.textContent = "Values were not confirmed";
+      }
+    }
+  </script>
+
+</body>
+</html>
