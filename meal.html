@@ -8,7 +8,6 @@
 
   <h2>Kaden Smith plans a meal</h2>
 
-  <!-- Meal checkboxes -->
   <form>
     <label><input type="checkbox" id="serveSalad" value="True"> Serve salad</label><br>
     <label><input type="checkbox" id="makeStew" value="True"> Make stew</label><br>
@@ -18,18 +17,17 @@
 
   <p id="mealResult"></p>
 
-  <!-- Original basic form (kept as requested) -->
   <form>
-    <label for="form1_age">What is your age </label>
-    <input type="number" id="form1_age" name="form1_age" min="10" max="50" step="2" value="30"> <br>
+    <label>Enter drink:</label>
+    <input type="text" id="drink" value="Wine"><br>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type="text" id="form1_nick" name="form1_nick" autofocus> <br>
+    <label>Enter starter:</label>
+    <input type="text" id="starter"><br><br>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <button type="button" onclick="updateMeal()">Update the meal</button>
   </form>
 
-  <p id="result">This text will be replaced</p>
+  <p id="updateResult"></p>
 
   <script>
     var my_meal = {};
@@ -42,16 +40,12 @@
       document.getElementById("mealResult").textContent = JSON.stringify(my_meal);
     }
 
-    function resolveForm() {
-      var age = document.getElementById("form1_age").value;
-      var nick = document.getElementById("form1_nick").value;
-      var confirmed = confirm("Are these the values? " + age + " and " + nick);
-      var out = document.getElementById("result");
-      if (confirmed) {
-        out.textContent = "Values were confirmed";
-      } else {
-        out.textContent = "Values were not confirmed";
-      }
+    function updateMeal() {
+      var drink = document.getElementById("drink").value;
+      var starter = document.getElementById("starter").value;
+      my_meal.drink = drink;
+      my_meal.starter = starter;
+      document.getElementById("updateResult").textContent = JSON.stringify(my_meal);
     }
   </script>
 
